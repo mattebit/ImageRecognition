@@ -29,5 +29,5 @@ if circles is not None:
         cv2.rectangle(output, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
 
     # show the output image
-    cv2.imshow("output", np.hstack([image, output]))
+    cv2.imshow("output", np.hstack([image,5, output]))
     cv2.waitKey(0)
