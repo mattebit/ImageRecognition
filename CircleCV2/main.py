@@ -1,20 +1,12 @@
-# import the necessary packages
 import numpy as np
-import argparse
 import cv2
 
-# construct the argument parser and parse the arguments
-#ap = argparse.ArgumentParser()
-#ap.add_argument("-i", "--image", required=True, help="Path to the image")
-#args = vars(ap.parse_args())
-
-# load the image, clone it for output, and then convert it to grayscale
-image = cv2.imread("prova.jpg")
+image = cv2.imread("prova2.jpg")
 output = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # detect circles in the image
-circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1.2, 100)
+circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1.15, 100)
 
 # ensure at least some circles were found
 if circles is not None:
@@ -28,6 +20,6 @@ if circles is not None:
         cv2.circle(output, (x, y), r, (0, 255, 0), 4)
         cv2.rectangle(output, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
 
-    # show the output image
-    cv2.imshow("output", np.hstack([image,5, output]))
-    cv2.waitKey(0)
+# show the output image
+cv2.imshow("output", np.hstack([image, output]))
+cv2.waitKey(0)
